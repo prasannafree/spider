@@ -136,8 +136,7 @@ class SpiderTokenizer:
         return [enc.ids for enc in encodings]
 
     def decode_batch(
-        self, ids_list: list[list[int]], skip_special_tokens: bool = False
-    ) -> list[str]:
+        self, ids_list: list[list[int]], skip_special_tokens: bool = False) -> list[str]:
         """
         Decode a batch of token ID lists back into texts.
 

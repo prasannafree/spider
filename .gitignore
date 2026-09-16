@@ -42,6 +42,10 @@ env/
 data/spider_data.zip
 data/__MACOSX/
 
+# Ignore heavy databases (contains files >100MB that exceed GitHub limits)
+data/spider_data/database/
+data/spider_data/test_database/
+
 # OS files
 .DS_Store
 Thumbs.db
