@@ -1,3 +1,5 @@
+
+
 import json
 from typing import Dict, List
 import torch
@@ -21,10 +23,10 @@ class SpiderDataset(Dataset):
         data_path: str,
         tables_path: str,
         tokenizer: SpiderTokenizer,
-        encoder_max_len: int = 512,
-        decoder_max_len: int = 128,
-    ):
-        self.tokenizer = tokenizer
+        encoder_max_len: int = 512,     #  this is the max size of context window  of  encoder  ( since no query will be more than 512 tokens)
+        decoder_max_len: int = 128,):   #  this is the max size of context window  of  decoder  ( since no query will be more than 128 tokens)
+
+        self.tokenizer = tokenizer      # the tokenizer that we are going to use 
         self.encoder_max_len = encoder_max_len
         self.decoder_max_len = decoder_max_len
 
@@ -38,10 +40,6 @@ class SpiderDataset(Dataset):
         # Precompute schema strings for fast lookup
         self.schemas: Dict[str, str] = self._build_schemas(tables_raw)
         
-        # Note: Length distributions were pre-computed on the training set:
-        # Encoder 99th percentile: 467. Max: 1268.
-        # Decoder 99th percentile: 74. Max: 118.
-        # This justifies the 512 and 128 limits.
 
     def _build_schemas(self, tables_raw: List[Dict]) -> Dict[str, str]:
         """
