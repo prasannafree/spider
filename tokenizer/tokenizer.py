@@ -148,16 +148,14 @@ class SpiderTokenizer:
             List of decoded text strings.
         """
         return self._tokenizer.decode_batch(
-            ids_list, skip_special_tokens=skip_special_tokens
-        )
+            ids_list, skip_special_tokens=skip_special_tokens)
 
     # ------------------------------------------------------------------
     # Model-ready encoding (adds special tokens)
     # ------------------------------------------------------------------
 
     def encode_for_model(
-        self, source: str, target: str | None = None
-    ) -> dict[str, list[int]]:
+        self, source: str, target: str | None = None) -> dict[str, list[int]]:
         """
         Encode source (and optionally target) with special token framing
         for the encoder-decoder transformer.
