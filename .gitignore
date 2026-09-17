@@ -49,3 +49,7 @@ data/spider_data/test_database/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Model Weights (Ignore ALL checkpoints because GitHub limit is 100MB)
+*.pt
+checkpoints/
